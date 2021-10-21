@@ -100,3 +100,45 @@ const sumaGastos = gastos.map((gasto) => {
   totalGastos += gasto.monto;
 });
 console.log(totalGastos);
+
+const contenedorItemNuevaOperacion = document.querySelector(
+  "#contenedor-item-nueva-operacion"
+);
+
+const colorDeMonto = (objeto) => {
+  if (objeto.tipo === "Ganancia") {
+    return "has-text-success";
+  } else {
+    return "has-text-danger";
+  }
+};
+
+let acc = "";
+const convertirOperacionesaHTML = (operaciones) => {
+  operaciones.map((operacion) => {
+    acc += `<div id="item-nueva-operacion" class="columns is-mobile">
+        <p id="descripcion-item-operacion" class="column is-3 mr-0-mobile has-text-weight-semibold">${
+          operacion.descripcion
+        }</p>
+        <div class="column is-3 is-6-mobile">
+          <p id="categoria-item-operacion" class="tag is-primary is-light">${
+            operacion.categoria
+          }</p>
+        </div>
+        <p id="fecha-item-operacion" class="column is-2 is-hidden-mobile">${
+          operacion.fecha
+        }</p>
+        <p id="monto-item-operacion" class="column is-2 is-3-mobile has-text-weight-bold ${colorDeMonto(
+          operacion
+        )}">$ ${operacion.monto}</p>
+        <div class="column is-2 is-3-mobile pt-0">
+          <button id="boton-editar-item-operaciones" class="button is-ghost is-small pt-0 pb-0">Editar</button>
+          <button id="boton-eliminar-item-operaciones" class="button is-ghost is-small pt-0">Eliminar</button>
+        </div>
+        </div>`;
+  });
+};
+
+convertirOperacionesaHTML(operaciones);
+contenedorItemNuevaOperacion.innerHTML = acc;
+console.log(acc);
