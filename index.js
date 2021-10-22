@@ -75,8 +75,6 @@ copiaOperaciones = operaciones.map((operacion) => {
 });
 console.log(copiaOperaciones);
 
-//Recorre con un filter operaciones y guarda el array resultante con el nombre filtroOperaciones. El array nuevo debera tener solo aquellas operaciones cuyo monto sea mayor a 3000.
-
 const filtroOperaciones = operaciones.filter((operacion) => {
   return operacion.monto > 3000;
 });
